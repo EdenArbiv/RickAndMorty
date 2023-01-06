@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 export default function MediaCard(props) {
   return (
-    <Card sx={{ width: 380 ,height: 230 , marginRight: 5, marginBottom: 5, border: '1px solid black', display: 'flex' , justifyContent: 'flex-end'}}>
+    <Card sx={{ width: 380 ,height: 230 , marginRight: 5, marginBottom: 5, border: '1px solid black', display: 'flex' , justifyContent: 'flex-start'}}>
       <CardMedia
         sx={{ width: 180 }}
         image={'https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_.jpg'}
@@ -27,8 +27,8 @@ export default function MediaCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Sheare</Button>
-        <Button size="small">Learnrr More</Button>
+        {/* <Button size="small">Sheare</Button> */}
+        <Button size="small">Learn More</Button>
       </CardActions>
       </div>
     </Card>
