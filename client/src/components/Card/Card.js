@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { StyledDot } from './styles';
 
 export default function MediaCard(props) {
   return (
@@ -23,6 +24,23 @@ export default function MediaCard(props) {
           {props.char.gender} 
           <br/>
           {props.char.species}
+          <br/>
+          status: 
+          {
+            props.char.status === 'Alive' ?
+            <>
+            <StyledDot color='green'/>
+            </>
+            : props.char.status === 'Dead' ?
+            <>
+            <StyledDot color='red'/>
+            </>
+            :
+            <>
+            <StyledDot/>
+            </>
+          }
+          {props.char.status}
           <br/>
           {props.char.type}
         </Typography>
