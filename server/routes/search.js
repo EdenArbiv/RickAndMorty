@@ -1,20 +1,23 @@
 const router = require('express').Router()
 const axios = require("axios");
 
-const options = {
-  method: 'GET',
-  url: 'https://rickandmortyapi.com/api/character/',
-};
 
-router.get('/', async (req , res)=> {
+
+router.get('/:id', async (req , res)=> {
     try {
-        const dataApi = await axios(options);
+        const { id } = req.params 
+        const dataApi = await axios({
+            method: 'GET',
+            url: `https://rickandmortyapi.com/api/${id}`,
+          });
         return res.status(200).json(dataApi.data)
     } catch (err) {
         console.log(err);
         res.sendStatus(500)
     }
 })
+
+
 
 router.get('/search', async (req , res)=>{
     // const { img } = req.body

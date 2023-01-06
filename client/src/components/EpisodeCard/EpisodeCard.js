@@ -11,20 +11,19 @@ export default function MediaCard(props) {
     <Card sx={{ width: 380 ,height: 230 , marginRight: 5, marginBottom: 5, border: '1px solid black', display: 'flex' , justifyContent: 'flex-end'}}>
       <CardMedia
         sx={{ width: 180 }}
-        image={props.char.image}
+        image={'https://m.media-amazon.com/images/M/MV5BZjRjOTFkOTktZWUzMi00YzMyLThkMmYtMjEwNmQyNzliYTNmXkEyXkFqcGdeQXVyNzQ1ODk3MTQ@._V1_.jpg'}
         title="green iguana"
       />
       <div>
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {props.char.name}
+        {props.episode.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {props.char.gender} 
+        Episode {props.episode.id}
           <br/>
-          {props.char.species}
+          {props.episode.air_date}
           <br/>
-          {props.char.type}
         </Typography>
       </CardContent>
       <CardActions>
