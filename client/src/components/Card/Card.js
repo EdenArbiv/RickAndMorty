@@ -9,7 +9,7 @@ import { StyledDot } from './styles';
 
 export default function MediaCard(props) {
   return (
-    <Card sx={{ width: 380 ,height: 230 , marginRight: 5, marginBottom: 5, border: '1px solid black', display: 'flex' , justifyContent: 'flex-end'}}>
+    <Card sx={{ width: 400 ,height: 230 , marginBottom: 5, border: '1px solid black', display: 'flex' , justifyContent: 'flex-start'}}>
       <CardMedia
         sx={{ width: 180 }}
         image={props.char.image}
@@ -46,8 +46,8 @@ export default function MediaCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Sheare</Button>
-        <Button size="small">Learnrr More</Button>
+        <Button size="small">Share</Button>
+        <Button size="small">Learn More</Button>
       </CardActions>
       </div>
     </Card>

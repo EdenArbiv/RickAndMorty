@@ -15,6 +15,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { StyledLogo } from './styles';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -70,6 +71,7 @@ export default function PrimarySearchAppBar() {
             aria-label="open drawer"
             sx={{ mr: 2 }}
           >
+            <StyledLogo src={'https://pbs.twimg.com/media/FTC2Yl6UsAUNN3D?format=jpg&name=small'}/>
             {/* <MenuIcon /> */}
           </IconButton>
           <Typography
