@@ -48,34 +48,53 @@ export default function BasicTabs(props) {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    switch (newValue) {
+        case 0 || '0':
+            props.setTab('character')
+            break;
+        case 1 || '1':
+            props.setTab('episode')
+            break;
+        case 2 || '2':
+            props.setTab('location')
+            break;
+        default:
+            props.setTab('character')
+        break;
+    }
   };
+
+  const resetData = () => {
+    props.setPage(1)
+    props.setGetData(false)
+  }
 
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'center' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Characters" {...a11yProps(0)} />
-          <Tab label="Episodes" {...a11yProps(1)} />
-          <Tab label="Locations" {...a11yProps(2)} />
+          <Tab label="Characters" {...a11yProps(0)} onClick={() => resetData()} />
+          <Tab label="Episodes" {...a11yProps(1)} onClick={() => resetData()} />
+          <Tab label="Locations" {...a11yProps(2)} onClick={() => resetData()} />
         </Tabs>
       </Box>
-      <TabPanel  sx={{ display: 'flex', justifyContent: 'center' }} value={value} index={0}>
+      <TabPanel sx={{ display: 'flex', justifyContent: 'center' }} value={value} index={0}>
         <StyledDiv>
             {props.characters && props.characters.map(char => <Card char={char}/>)}
         </StyledDiv>
-            <LoadingBtn loading={props.loading} onClick={() => props.LoadMoreCharacters()}/>
+        {props.characters.length ? <LoadingBtn loading={props.loading} onClick={() => props.LoadMore()}/> : <StyledDiv>There is nothing here</StyledDiv>}
       </TabPanel>
       <TabPanel value={value} index={1}>
       <StyledDiv>
             {props.characters && props.episodes.map(episode => <EpisodeCard episode={episode}/>)}
         </StyledDiv>
-        <LoadingBtn loading={props.loading} onClick={() => props.LoadMoreEpisodes()}/>
+        {props.episodes.length ? <LoadingBtn loading={props.loading} onClick={() => props.LoadMore()}/> : <StyledDiv>There is nothing here</StyledDiv>}
       </TabPanel>
       <TabPanel value={value} index={2}>
       <StyledDiv>
             {props.characters && props.locations.map(location => <LocationCard location={location}/>)}
         </StyledDiv>
-        <LoadingBtn loading={props.loading} onClick={() => props.LoadMoreLocations()}/>
+        {props.locations.length ? <LoadingBtn loading={props.loading} onClick={() => props.LoadMore()}/> : <StyledDiv>There is nothing here</StyledDiv>}
       </TabPanel>
     </Box>
   );

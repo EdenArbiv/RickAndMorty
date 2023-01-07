@@ -5,7 +5,11 @@ export const getRequest = (uri) => {
     try {
         return axios.get(uri).then(res => {
             // console.log(res.data.results)
-            return res.data.results;
+            if(res.data.err){
+                return res.data;
+            }else{
+                return res.data.results;
+            }
         })
     } catch (err) {
         console.log(err)

@@ -16,6 +16,7 @@ const HomePage = () => {
   const [page, setPage] = useState(1)
   const [update, setUpdate] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [tab, setTab] = useState('character')
 
   const FirstgetData = async () => {
     setPage(1)
@@ -31,52 +32,86 @@ const HomePage = () => {
     })
   }
 
-  const LoadMoreCharacters = () => {
+  const LoadMore = () => {
     setLoading(true)
-    return getRequest(baseUrl+`character?page=${page + 1}`).then(res => {
+    return getRequest(baseUrl+`${tab}?page=${page + 1}`).then(res => {
+      switch (tab) {
+        case 'character':
+          let newCharacters = [...characters]
+          newCharacters.push(...res)
+          setCharacters(newCharacters)
+          break;
+        case 'episode':
+          let newEpisodes = [...episodes]
+          newEpisodes.push(...res)
+          setEpisodes(newEpisodes)
+          break;
+        case 'location':
+          let newLocations = [...locations]
+          newLocations.push(...res)
+          setLocations(newLocations)
+          break;
+        default:
+          let newCharacter = [...characters]
+          newCharacter.push(...res)
+          setCharacters(newCharacter)
+        break;
+
+      }
       setPage(page + 1)
-      let newCharacters = [...characters]
-      newCharacters.push(...res)
-      setCharacters(newCharacters)
       setUpdate(!update)
       setLoading(false)
     })
   }
 
-  const LoadMoreEpisodes = () => {
-    setLoading(true)
-    return getRequest(baseUrl+`episode?page=${page + 1}`).then(res => {
-      setPage(page + 1)
-      let newEpisodes = [...episodes]
-      newEpisodes.push(...res)
-      setEpisodes(newEpisodes)
+  const searchValue = (e) => {
+    let value = e.target.value
+    if(value.length){
+      return getRequest(baseUrl+`search/${tab}?name=${value}`).then(res => {
+        if(res.err){
+          switch (tab) {
+            case 'character':
+              setCharacters([])
+              break;
+            case 'episode':
+              setEpisodes([])
+              break;
+            case 'location':
+              setLocations([])
+              break;
+          }
+        }else{
+          let Results = res.slice(0,5)
+          switch (tab) {
+            case 'character':
+              setCharacters(Results)
+              break;
+            case 'episode':
+              setEpisodes(Results)
+              break;
+            case 'location':
+              setLocations(Results)
+              break;
+          }
+        }
+        setUpdate(!update)
+      })
+    }else{
+      setGetData(false)
       setUpdate(!update)
-      setLoading(false)
-    })
-  }
-
-  const LoadMoreLocations = () => {
-    setLoading(true)
-    return getRequest(baseUrl+`location?page=${page + 1}`).then(res => {
-      setPage(page + 1)
-      let newLocations = [...locations]
-      newLocations.push(...res)
-      setLocations(newLocations)
-      setUpdate(!update)
-      setLoading(false)
-    })
+    }
   }
 
   useEffect(() => {
     if(!getData){
       FirstgetData()
     }
-  }, [update])
-  
+  }, [update, getData])
+
   return (
     <>
-    <Header/>
-    <TabsTable characters={characters} episodes={episodes} locations={locations} LoadMoreCharacters={LoadMoreCharacters} LoadMoreEpisodes={LoadMoreEpisodes} LoadMoreLocations={LoadMoreLocations} loading={loading}/>
+    <Header searchValue={searchValue}/>
+    <TabsTable characters={characters} episodes={episodes} locations={locations} LoadMore={LoadMore} loading={loading} setPage={setPage} setTab={setTab} setGetData={setGetData}/>
     </>
   )
 }

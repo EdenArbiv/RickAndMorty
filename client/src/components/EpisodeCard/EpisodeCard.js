@@ -28,7 +28,7 @@ export default function MediaCard(props) {
       </CardContent>
       <CardActions>
         {/* <Button size="small">Sheare</Button> */}
-        <Button size="small">Learn More</Button>
+        {/* <Button size="small">Learn More</Button> */}
       </CardActions>
       </div>
     </Card>

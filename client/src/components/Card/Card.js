@@ -46,8 +46,9 @@ export default function MediaCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        {/* <Button size="small">Share</Button> */}
-        <Button size="small">Learn More</Button>
+        {
+          props.char.name && props.char.name === 'Rick Sanchez' && <Button size="small">Change Values</Button>
+        }
       </CardActions>
       </div>
     </Card>
