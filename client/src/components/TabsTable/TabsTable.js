@@ -8,6 +8,7 @@ import Card from '../Card';
 import { StyledDiv } from './styles';
 import EpisodeCard from '../EpisodeCard';
 import LocationCard from '../LocationCard';
+import LoadingBtn from '../LoadingBtn';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -62,16 +63,19 @@ export default function BasicTabs(props) {
         <StyledDiv>
             {props.characters && props.characters.map(char => <Card char={char}/>)}
         </StyledDiv>
+            <LoadingBtn loading={props.loading} onClick={() => props.LoadMoreCharacters()}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
       <StyledDiv>
             {props.characters && props.episodes.map(episode => <EpisodeCard episode={episode}/>)}
         </StyledDiv>
+        <LoadingBtn loading={props.loading} onClick={() => props.LoadMoreEpisodes()}/>
       </TabPanel>
       <TabPanel value={value} index={2}>
       <StyledDiv>
             {props.characters && props.locations.map(location => <LocationCard location={location}/>)}
         </StyledDiv>
+        <LoadingBtn loading={props.loading} onClick={() => props.LoadMoreLocations()}/>
       </TabPanel>
     </Box>
   );
