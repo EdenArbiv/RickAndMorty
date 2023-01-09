@@ -64,43 +64,43 @@ const HomePage = () => {
     })
   }
 
-  const searchValue = (e) => {
-    let value = e.target.value
-    if(value.length){
-      return getRequest(baseUrl+`search/${tab}?name=${value}`).then(res => {
-        if(res.err){
-          switch (tab) {
-            case 'character':
-              setCharacters([])
-              break;
-            case 'episode':
-              setEpisodes([])
-              break;
-            case 'location':
-              setLocations([])
-              break;
-          }
-        }else{
-          let Results = res.slice(0,5)
-          switch (tab) {
-            case 'character':
-              setCharacters(Results)
-              break;
-            case 'episode':
-              setEpisodes(Results)
-              break;
-            case 'location':
-              setLocations(Results)
-              break;
-          }
-        }
-        setUpdate(!update)
-      })
-    }else{
-      setGetData(false)
-      setUpdate(!update)
-    }
-  }
+  // const searchValue = (e) => {
+  //   let value = e.target.value
+  //   if(value.length){
+  //     return getRequest(baseUrl+`search/${tab}?name=${value}`).then(res => {
+  //       if(res.err){
+  //         switch (tab) {
+  //           case 'character':
+  //             setCharacters([])
+  //             break;
+  //           case 'episode':
+  //             setEpisodes([])
+  //             break;
+  //           case 'location':
+  //             setLocations([])
+  //             break;
+  //         }
+  //       }else{
+  //         let Results = res.slice(0,5)
+  //         switch (tab) {
+  //           case 'character':
+  //             setCharacters(Results)
+  //             break;
+  //           case 'episode':
+  //             setEpisodes(Results)
+  //             break;
+  //           case 'location':
+  //             setLocations(Results)
+  //             break;
+  //         }
+  //       }
+  //       setUpdate(!update)
+  //     })
+  //   }else{
+  //     setGetData(false)
+  //     setUpdate(!update)
+  //   }
+  // }
 
   useEffect(() => {
     if(!getData){
@@ -110,7 +110,7 @@ const HomePage = () => {
 
   return (
     <>
-    <Header searchValue={searchValue}/>
+    {/* <Header searchValue={searchValue}/> */}
     <TabsTable characters={characters} episodes={episodes} locations={locations} LoadMore={LoadMore} loading={loading} setPage={setPage} setTab={setTab} setGetData={setGetData}/>
     </>
   )

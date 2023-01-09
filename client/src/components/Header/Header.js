@@ -16,6 +16,9 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { StyledLogo } from './styles';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import { useNavigate } from 'react-router-dom';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -58,7 +61,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function PrimarySearchAppBar(props) {
-
+  const navigate = useNavigate()
  
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -82,7 +85,8 @@ export default function PrimarySearchAppBar(props) {
           >
             Rick And Morty
           </Typography>
-          <Search>
+          <Button onClick={() => navigate('/search')} sx={{marginLeft: 5, border: '1px solid white'}} variant="inhirt"><SearchIcon /> Search </Button>
+          {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -91,7 +95,7 @@ export default function PrimarySearchAppBar(props) {
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
-          </Search>
+          </Search> */}
           {/* <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
