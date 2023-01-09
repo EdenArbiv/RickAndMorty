@@ -19,6 +19,7 @@ import { StyledLogo } from './styles';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { useNavigate } from 'react-router-dom';
+import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -85,7 +86,18 @@ export default function PrimarySearchAppBar(props) {
           >
             Rick And Morty
           </Typography>
-          <Button onClick={() => navigate('/search')} sx={{marginLeft: 5, border: '1px solid white'}} variant="inhirt"><SearchIcon /> Search </Button>
+          <Button onClick={() => window.location.href.includes('/search') ? navigate('/') : navigate('/search') } sx={{marginLeft: 5, border: '1px solid white'}} variant="inhirt">
+            {
+                window.location.href.includes('/search') ?
+                <>
+                <KeyboardReturnIcon/> Return
+                </>
+                :
+                <>
+                <SearchIcon /> Search 
+                </>
+            }
+            </Button>
           {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
