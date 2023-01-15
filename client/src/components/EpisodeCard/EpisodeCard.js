@@ -3,7 +3,6 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 export default function MediaCard(props) {
@@ -27,8 +26,6 @@ export default function MediaCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        {/* <Button size="small">Sheare</Button> */}
-        {/* <Button size="small">Learn More</Button> */}
       </CardActions>
       </div>
     </Card>

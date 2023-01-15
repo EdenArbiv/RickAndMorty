@@ -1,10 +1,14 @@
 
 import {
-    Wrapper
+    Wrapper,
+    Title,
+    StyledDiv
   } from "./styles";
   
   export {
-    Wrapper
+    Wrapper,
+    Title,
+    StyledDiv
   
   };
   

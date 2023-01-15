@@ -8,3 +8,15 @@ export const Wrapper = styled.div`
     justify-content: center;
 `;
 
+export const Title = styled.h2`
+`;
+
+export const StyledDiv = styled.div`
+  padding: 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+`;
+
+
