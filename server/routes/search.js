@@ -34,17 +34,4 @@ router.get('/search/:id', async (req , res)=> {
 
 
 
-router.get('/search', async (req , res)=>{
-    // const { img } = req.body
-    // const user = users.find(u=> u.username == req.session.username )
-
-    // if(!img){
-    //     return res.status(400).send({err:"img is required"})
-    // }
-
-    // user.img = img
-    // res.send({msg:'cool pic!'})
-})
-
-
 module.exports = router
